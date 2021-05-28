@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      New Post:
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div style="padding: 16px">
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Title:</mat-label>
+            <input matInput placeholder="Title goes here.." [(ngModel)]="title" [formControl]="titleValidator">
+            <mat-error *ngIf="titleValidator.hasError('required')">
+              Post title is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Body:</mat-label>
+            <input matInput placeholder="What should you post?" [(ngModel)]="body">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="spacer" align="end">
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onAddPost()" [disabled]="titleValidator.hasError('required')"> Add </button>
+  </mat-card-actions>
+</mat-card>

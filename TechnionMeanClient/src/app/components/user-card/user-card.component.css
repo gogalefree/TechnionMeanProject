@@ -1,0 +1,21 @@
+mat-card {
+  border: 2px;
+  border-radius: 3px;
+  border-color: chartreuse;
+  border-style: solid;
+}
+
+div h4 {
+    padding-top: 12px
+}
+
+mat-form-field {
+  padding-bottom: 8px;
+}
+
+.green-border {
+  border: 2px;
+  border-radius: 3px;
+  border-color: chartreuse;
+  border-style: solid;
+}

@@ -1,0 +1,85 @@
+<mat-card [style.border-color]="hasUncompletedTasks() ? 'red' : 'chartreuse' " [style.background-color]="cardData.isSelected ? '#ffe4b3' : 'white'">
+  <!-- <div class="container"> -->
+  <div class="row">
+    <div class="col-8">
+      <mat-label (click)='onShowDetails()'>ID: {{id}}</mat-label> <br><br>
+    </div>
+    <div class="col-4">
+      <span *ngIf="updated" class="badge badge-success">Updated</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Full Name:</mat-label>
+        <input matInput placeholder="Full name goes here" required [formControl]="nameFormControl" [(ngModel)]="cardData.user.name">
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          Plase enter user's full name.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Email:</mat-label>
+        <input matInput placeholder="" [(ngModel)]="cardData.user.email" required [formControl]="emailFormControl">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div *ngIf="showMore">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Street:</mat-label>
+          <input matInput placeholder="" [(ngModel)]="cardData.user.street">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>City:</mat-label>
+          <input matInput placeholder="" [(ngModel)]="cardData.user.city">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Zip Code:</mat-label>
+          <input matInput placeholder="" [(ngModel)]="cardData.user.zipCode">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="row">
+    <div class="col-3">
+      <button mat-stroked-button color="primary" (mouseenter)='onShowMore()' (click)='onShowLess()'>{{moreButtonTitle}}</button>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-3">
+      <button mat-raised-button color="accent" (click)="onUpdate()" [disabled]="nameFormControl.hasError('required') || emailFormControl.hasError('required') || emailFormControl.hasError('email')">Update</button>
+    </div>
+    <div class="col-3">
+      <button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+
+
+
+
+</mat-card>

@@ -1,0 +1,29 @@
+<p class="main-search-field-p" style="align-items: center center;">
+  <mat-form-field class="search-form-field">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" #search [(ngModel)]="searchValue" (keyup)="onSearchChanged(search.value)">
+    <button mat-icon-button *ngIf="searchValue" matSuffix mat-icon-button (click)="onSearchChanged('')">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="primary" style="margin-left: 50px;" (click)="onAddUser()">Add User</button>
+</p>
+
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-6">
+      <mat-grid-list cols="1" rowHeight="{{rowHeight}}px">
+        <mat-grid-tile *ngFor="let u of filteredUiData ; let i = index" [colspan]="1" [rowspan]=u.rowSpan>
+
+          <app-user-card [cardData]="u" [id]="i" (cardSelected)="onCardSelected($event)"></app-user-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <div class="col-6">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

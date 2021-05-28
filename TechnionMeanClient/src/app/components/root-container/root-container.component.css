@@ -1,0 +1,16 @@
+mat-grid-tile {
+  background: white;
+}
+.search-form-field {
+  width: 200px;
+}
+
+.main-search-field-p {
+  padding-left: 16px;
+}
+
+p {
+  text-align: center;
+ line-height: 100px;
+ 
+ }

@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Create Task:
+    </mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+    <div style="padding: 16px">
+
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Task Title:</mat-label>
+            <input matInput placeholder="What should you do?" [(ngModel)]="title" [formControl]="titleValidator">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="spacer" align="end">
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onAddTask()" [disabled]="titleValidator.hasError('required')"> Add </button>
+  </mat-card-actions>
+</mat-card>

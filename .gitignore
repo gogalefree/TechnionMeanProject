@@ -1,0 +1,11 @@
+TechnionMeanClient/node_modules
+TechnionMeanClient/.DS_STORE
+TechnionMeanClient/dist/
+/bazel-out
+/integration/bazel/bazel-*
+*.log
+
+TechnionMeanServer/node_modules
+TechnionMeanServer/build
+TechnionMeanServer/npm-debug.log
+TechnionMeanServer/.DS_Store
